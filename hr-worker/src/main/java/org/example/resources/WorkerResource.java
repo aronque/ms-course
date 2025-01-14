@@ -26,9 +26,6 @@ public class WorkerResource {
 
     private static Logger LOGGER = LoggerFactory.getLogger(WorkerResource.class);
 
-    @Value("${test.config}")
-    private String tstCfg;
-
     @Autowired
     private Environment env;
 
@@ -48,12 +45,5 @@ public class WorkerResource {
 
         Worker result = repository.findById(id).get();
         return ResponseEntity.ok().body(result);
-    }
-
-    @GetMapping("/configs")
-    public ResponseEntity<Void> findConfig(){
-
-        LOGGER.info("CONFIG: " + tstCfg);
-        return ResponseEntity.noContent().build();
     }
 }
